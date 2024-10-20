@@ -41,12 +41,13 @@ module decrypt(
 
     logic [31:0] inv_mix_col_out [0:3];
 
-
+    /* Out put from inv_sub_word given to Inv Mix Column with Add Round Key */
     inv_mix_col imc1 (.column_in({out_word[127:120] ^ key[127:120], out_word[95:88] ^ key[95:88], out_word[63:56] ^ key[63:56], out_word[31:24] ^ key[31:24]}), .column_out(inv_mix_col_out[0]));
     inv_mix_col imc2 (.column_in({out_word[119:112] ^ key[119:112], out_word[87:80] ^ key[87:80], out_word[55:48] ^ key[55:48], out_word[23:16] ^ key[23:16]}), .column_out(inv_mix_col_out[1]));
     inv_mix_col imc3 (.column_in({out_word[111:104] ^ key[111:104], out_word[79:72] ^ key[79:72], out_word[47:40] ^ key[47:40], out_word[15:8] ^ key[15:8]}), .column_out(inv_mix_col_out[2]));
     inv_mix_col imc4 (.column_in({out_word[103:96] ^ key[103:96],  out_word[71:64] ^ key[71:64], out_word[39:32] ^ key[39:32], out_word[7:0] ^ key[7:0]}), .column_out(inv_mix_col_out[3]));
 
+    /* Input to Inv SBOX after Add Round Key and Inv Shift Rows */
     sub_word sw1 (.in_word(in_word[127-:32]), .out_word(out_word[127-:32]), .enc_or_dec(1'b0));
     sub_word sw2 (.in_word(in_word[95-:32]), .out_word(out_word[95-:32]), .enc_or_dec(1'b0));
     sub_word sw3 (.in_word(in_word[63-:32]), .out_word(out_word[63-:32]), .enc_or_dec(1'b0));
@@ -66,6 +67,7 @@ module decrypt(
                             /* Add Round Key */
                             plain_text_reg = cipher_text_in ^ key;
 
+                            /* Input to Inv Sub Bytes with inv shifted rows */
                             in_word = {
                                 plain_text_reg[127-:32],
                                 {plain_text_reg[71-:8], plain_text_reg[95-:24]},
@@ -74,15 +76,20 @@ module decrypt(
                             };
                         end
                         0: begin
+                            /* Add round Key */
                             plain_text_reg = out_word ^ key;
+
+                            /* 10 Rounds are done, hold plain text value as along as enabled */
                             decrypt_state = IDLE;
                         end
                         default: begin
+                            /* Read Output after inv mix column */
                             plain_text_reg[127-:32] = {inv_mix_col_out[0][31-:8], inv_mix_col_out[1][31-:8], inv_mix_col_out[2][31-:8], inv_mix_col_out[3][31-:8]};
                             plain_text_reg[95-:32] = {inv_mix_col_out[0][23-:8], inv_mix_col_out[1][23-:8], inv_mix_col_out[2][23-:8], inv_mix_col_out[3][23-:8]};
                             plain_text_reg[63-:32] = {inv_mix_col_out[0][15-:8], inv_mix_col_out[1][15-:8], inv_mix_col_out[2][15-:8], inv_mix_col_out[3][15-:8]};
                             plain_text_reg[31-:32] = {inv_mix_col_out[0][7-:8], inv_mix_col_out[1][7-:8], inv_mix_col_out[2][7-:8], inv_mix_col_out[3][7-:8]};
 
+                            /* Input to Inv Sub Bytes with inv shifted rows */
                             in_word = {
                                 plain_text_reg[127-:32],
                                 {plain_text_reg[71-:8], plain_text_reg[95-:24]},
@@ -93,15 +100,20 @@ module decrypt(
                     endcase
                 end
                 IDLE: begin
+                    /* Hold plain text value */
                     plain_text_reg = plain_text_reg;
                 end
                 default: begin
+                    /* Hold plain text value */
                     plain_text_reg = plain_text_reg;
                 end
             endcase
+
+            /* Update Round */
             round_reg -= 1;
         end
         else begin
+            /* Reset Everything */
             plain_text_reg = 0;
             in_word = 0;
             round_reg = 10;

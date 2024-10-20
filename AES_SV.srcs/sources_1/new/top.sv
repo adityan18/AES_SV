@@ -54,8 +54,8 @@ module top(
     assign round_in = (enc_or_dec) ? round_in_enc : round_in_dec; /* Choose which round_in signal to take based on enc or dec */
     assign text_out = (enc_or_dec) ? text_out_enc : text_out_dec; /* Choose which text_out signal to take based on enc or dec */
 
-    assign en_key_gen = en;
+    assign en_key_gen = en; /* Enable Key Generation When module is enabled */
     assign en_enc = key_gen_done ? (enc_or_dec ? 1'b1 : 1'b0) : 1'b0;
     assign en_dec = key_gen_done ? (enc_or_dec ? 1'b0 : 1'b1) : 1'b0;
-    
+
 endmodule

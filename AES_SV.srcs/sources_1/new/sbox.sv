@@ -21,9 +21,9 @@
 
 
 module sbox(
-    input [7:0] in_byte, /* Input Word */
+    input [7:0] in_byte, /* Input Byte */
     input enc_or_dec, /* Encryption or Decryption */
-    output logic [7:0] sub_byte /* Subsitute Word */
+    output logic [7:0] sub_byte /* Subsitute Byte */
     );
 
     logic [7:0] SBOX_LUT [0:255];

@@ -41,11 +41,15 @@ module encrypt(
 
     logic [31:0] mix_col_out [0:3];
 
+
+    /* Input to SBOX after Add Round Key and Shift Rows */
     sub_word sw1 (.in_word(in_word[127-:32]), .out_word(out_word[127-:32]), .enc_or_dec(1'b1));
     sub_word sw2 (.in_word(in_word[95-:32]), .out_word(out_word[95-:32]), .enc_or_dec(1'b1));
     sub_word sw3 (.in_word(in_word[63-:32]), .out_word(out_word[63-:32]), .enc_or_dec(1'b1));
     sub_word sw4 (.in_word(in_word[31-:32]), .out_word(out_word[31-:32]), .enc_or_dec(1'b1));
 
+
+    /* Out put from sub_word given to Mix Column */
     mix_col mc1 (.column_in({out_word[127:120], out_word[95:88], out_word[63:56], out_word[31:24]}), .column_out(mix_col_out[0]));
     mix_col mc2 (.column_in({out_word[119:112], out_word[87:80], out_word[55:48], out_word[23:16]}), .column_out(mix_col_out[1]));
     mix_col mc3 (.column_in({out_word[111:104], out_word[79:72], out_word[47:40], out_word[15:8]}), .column_out(mix_col_out[2]));
@@ -64,7 +68,7 @@ module encrypt(
                             /* Add Round Key */
                             cipher_text_reg = plain_text_in ^ key;
 
-                            /* Sub Bytes */
+                            /* Input to Sub Bytes with shifted rows */
                             in_word = { cipher_text_reg[127-:32],
                                         {cipher_text_reg[87-:24], cipher_text_reg[95-:8]},
                                         {cipher_text_reg[47-:16], cipher_text_reg[63-:16]},
@@ -72,17 +76,23 @@ module encrypt(
                                     };
                         end
                         10: begin
+                            /* Add round Key */
                             cipher_text_reg = out_word ^ key;
+
+                            /* 10 Rounds are done, hold cipher value as along as enabled */
                             encrypt_state = IDLE;
                         end
                         default: begin
+                            /* Read Output after mix column */
                             cipher_text_reg[127-:32] = {mix_col_out[0][31-:8], mix_col_out[1][31-:8], mix_col_out[2][31-:8], mix_col_out[3][31-:8]};
                             cipher_text_reg[95-:32] = {mix_col_out[0][23-:8], mix_col_out[1][23-:8], mix_col_out[2][23-:8], mix_col_out[3][23-:8]};
                             cipher_text_reg[63-:32] = {mix_col_out[0][15-:8], mix_col_out[1][15-:8], mix_col_out[2][15-:8], mix_col_out[3][15-:8]};
                             cipher_text_reg[31-:32] = {mix_col_out[0][7-:8], mix_col_out[1][7-:8], mix_col_out[2][7-:8], mix_col_out[3][7-:8]};
 
+                            /* Add Round Key */
                             cipher_text_reg = cipher_text_reg ^ key;
 
+                            /* Input to Sub Bytes with shifted rows */
                             in_word = { cipher_text_reg[127-:32],
                                         {cipher_text_reg[87-:24], cipher_text_reg[95-:8]},
                                         {cipher_text_reg[47-:16], cipher_text_reg[63-:16]},
@@ -91,17 +101,21 @@ module encrypt(
                         end
                     endcase
 
+                    /* Update Round */
                     round_reg += 1;
                 end
                 IDLE: begin
+                    /* Hold Cipher Value */
                     cipher_text_reg = cipher_text_reg;
                 end
                 default: begin
+                    /* Hold Cipher Value */
                     cipher_text_reg = cipher_text_reg;
                 end
             endcase
         end
         else begin
+            /* Reset everything */
             round_reg = 0;
             cipher_text_reg = 0;
             in_word = 0;
