@@ -23,7 +23,7 @@
 module key_generator(
     input clk, /* Clock */
     input en, /* Enable */
-    input [127:0] key,  /* Key Word Input */
+    input [127:0] key_in,  /* Key Word Input */
     input [3:0] in_round, /* Input Round for Getting Key */
 
     output key_gen_done, /* Key Generation Complete Signal */
@@ -39,14 +39,14 @@ module key_generator(
 
     logic key_gen_done_flag;
 
-    logic [3:0] round = 0;
-    logic [5:0] index = 3;
+    logic [3:0] round;
+    logic [5:0] index;
 
     /* RCON Pre Computed */
     wire [7:0] rcon [0:9];   /* Rcon values for each round */
 
     /* INSTANTIATIONS */
-    sub_word sw (.in_word(in_word), .out_word(out_word));
+    sub_word sw (.in_word(in_word), .out_word(out_word), .enc_or_dec(1'b1));
 
     /* ASSIGNMENTS */
     assign key_gen_done = (key_gen_done_flag == 1) ? 1'b1 : 1'b0;
@@ -66,7 +66,7 @@ module key_generator(
 
     assign key_out = key_out_reg;
 
-    always_ff @( posedge clk ) begin : KEY_GEN_SM
+    always_ff @( posedge clk ) begin : KEY_GEN
         if(en) begin
             if(key_gen_done_flag != 1) begin
                 round = round + 1;
@@ -96,23 +96,25 @@ module key_generator(
             end
         end
         else begin
+            round = 0;
+            index = 3;
             key_gen_done_flag = 0;
-            full_key[0][0] = key[127:120];
-            full_key[0][1] = key[119:112];
-            full_key[0][2] = key[111:104];
-            full_key[0][3] = key[103:96];
-            full_key[1][0] = key[95:88];
-            full_key[1][1] = key[87:80];
-            full_key[1][2] = key[79:72];
-            full_key[1][3] = key[71:64];
-            full_key[2][0] = key[63:56];
-            full_key[2][1] = key[55:48];
-            full_key[2][2] = key[47:40];
-            full_key[2][3] = key[39:32];
-            full_key[3][0] = key[31:24];
-            full_key[3][1] = key[23:16];
-            full_key[3][2] = key[15:8];
-            full_key[3][3] = key[7:0];
+            full_key[0][0] = key_in[127:120];
+            full_key[0][1] = key_in[119:112];
+            full_key[0][2] = key_in[111:104];
+            full_key[0][3] = key_in[103:96];
+            full_key[1][0] = key_in[95:88];
+            full_key[1][1] = key_in[87:80];
+            full_key[1][2] = key_in[79:72];
+            full_key[1][3] = key_in[71:64];
+            full_key[2][0] = key_in[63:56];
+            full_key[2][1] = key_in[55:48];
+            full_key[2][2] = key_in[47:40];
+            full_key[2][3] = key_in[39:32];
+            full_key[3][0] = key_in[31:24];
+            full_key[3][1] = key_in[23:16];
+            full_key[3][2] = key_in[15:8];
+            full_key[3][3] = key_in[7:0];
         end
     end
 
