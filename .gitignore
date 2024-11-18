@@ -2,6 +2,7 @@ AES_SV.cache/
 AES_SV.hw/
 AES_SV.ip_user_files/
 AES_SV.runs/
+AES_SV.gen/
 AES_SV.sim/
 AES_SV.gen/sources_1/bd/aes_128_bd/sim/
 AES_SV.gen/sources_1/bd/aes_128_bd/synth/

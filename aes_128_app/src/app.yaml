@@ -1,0 +1,3 @@
+domain_path: D:\FPGA\AES_SV\aes_128_pf\export\aes_128_pf\sw\standalone_psu_cortexa53_0
+app_src_dir: D:\Software\Xilinx\Vitis\2024.1\data\embeddedsw\lib\sw_apps\hello_world
+template: hello_world

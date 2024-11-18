@@ -1,0 +1,15 @@
+{
+  "name": "aes_128_app",
+  "type": "HOST",
+  "platform": "D:\\FPGA\\AES_SV\\aes_128_pf\\export\\aes_128_pf\\aes_128_pf.xpfm",
+  "domain": "standalone_psu_cortexa53_0",
+  "cpuInstance": "psu_cortexa53_0",
+  "cpuType": "cortex-a53",
+  "os": "standalone",
+  "configuration": {
+    "componentType": "HOST",
+    "hostToolchainConfigurations": []
+  },
+  "domainRealName": "standalone_psu_cortexa53_0",
+  "applicationFlow": "EMBEDDED"
+}
