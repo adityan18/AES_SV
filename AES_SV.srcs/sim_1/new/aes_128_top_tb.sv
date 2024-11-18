@@ -3,9 +3,9 @@
 // Company:
 // Engineer:
 //
-// Create Date: 10/19/2024 12:30:26 PM
+// Create Date: 11/18/2024 09:51:38 PM
 // Design Name:
-// Module Name: top_tb
+// Module Name: aes_128_top_tb
 // Project Name:
 // Target Devices:
 // Tool Versions:
@@ -20,19 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module top_tb(
+module aes_128_top_tb(
 
     );
 
-    logic clk, en;
-    logic [127:0] text_in;
-    logic [127:0] key_in;
-
-    logic [127:0] text_out;
-
-    logic [1:0] event_flag;
-
-    logic enc_or_dec;
+    logic clk;
 
     logic [127:0] key1 = 128'h2b28ab097eaef7cf15d2154f16a6883c;
     logic [127:0] plain1 = 128'h328831e0435a3137f6309807a88da234;
@@ -42,8 +34,27 @@ module top_tb(
     logic [127:0] plain2 = 128'h4c6d73646f20756f72696d6c6570206f;
     logic [127:0] cipher2 = 128'hbfc4c771d72cd65b5c4dfaaefff80edb;
 
+    logic en;
+    logic enc_or_dec;
+    logic [1:0]event_flag;
 
-    top dut (clk, en, enc_or_dec, key_in, text_in, text_out, event_flag);
+    logic [127:0] key_in;
+    logic [127:0] text_in;
+    logic [127:0] text_out;
+
+    logic [31:0]key_in_0, key_in_1, key_in_2, key_in_3;
+    logic [31:0]text_in_0, text_in_1, text_in_2, text_in_3;
+    logic [31:0]text_out_0, text_out_1, text_out_2, text_out_3;
+
+    assign {key_in_0, key_in_1 ,key_in_2, key_in_3} = key_in;
+    assign {text_in_0, text_in_1, text_in_2, text_in_3} = text_in;
+    assign  text_out = {text_out_0, text_out_1, text_out_2, text_out_3};
+
+    aes_128_top dut (clk, {enc_or_dec, en},
+             key_in_0, key_in_1 ,key_in_2, key_in_3,
+             text_in_0, text_in_1, text_in_2, text_in_3,
+             text_out_0, text_out_1, text_out_2, text_out_3,
+             event_flag);
 
     /* Genreate Clock */
     initial begin
@@ -152,4 +163,5 @@ module top_tb(
 
         $finish;
     end
+
 endmodule

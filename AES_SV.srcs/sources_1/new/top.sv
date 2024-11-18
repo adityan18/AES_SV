@@ -24,8 +24,8 @@ module top(
     input clk,
     input en,
     input enc_or_dec,
-    input [127:0] text_in,
     input [127:0] key_in,
+    input [127:0] text_in,
 
     output [127:0] text_out,
     output [1:0] event_flag
