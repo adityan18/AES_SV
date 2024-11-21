@@ -33,10 +33,21 @@ collect(PROJECT_LIB_DEPS xilstandalone;xiltimer)
 
 
 
+
+
+
+
+
+
+
+
+
+
 collect(PROJECT_LIB_DEPS xil)
 collect(PROJECT_LIB_DEPS gcc)
 collect(PROJECT_LIB_DEPS c)
 
+collect (PROJECT_LIB_SOURCES aes_driver.c)
 collect (PROJECT_LIB_SOURCES helloworld.c)
 collect (PROJECT_LIB_SOURCES platform.c)
 collector_list (_sources PROJECT_LIB_SOURCES)
