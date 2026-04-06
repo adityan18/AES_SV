@@ -1,15 +1,72 @@
-AES_SV.cache/
-AES_SV.hw/
-AES_SV.ip_user_files/
-AES_SV.runs/
-AES_SV.gen/
-AES_SV.sim/
-AES_SV.gen/sources_1/bd/aes_128_bd/sim/
-AES_SV.gen/sources_1/bd/aes_128_bd/synth/
-*.log
+# Vivado/Vitis Project .gitignore
+# Ignore auto-generated files and folders
+
+# Vivado generated directories
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.gen/
+*.sim/
+.Xil/
+
+# Vivado generated files
 *.jou
+*.log
 *.str
+*.wdb
+*.xpr.backup
 *.xml
 *.bda
 *.bxml
 *.ui
+*.bit
+*.xsa
+*.xci
+
+# Vitis generated files
+*.elf
+*.bin
+*.hex
+*.map
+*.dis
+*.o
+*.d
+*.a
+
+# Platform generated files
+psu_init*
+xfsbl_*
+*_gmon.out
+
+# Build artifacts
+compile_commands.json
+vitis-comp.json
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+Makefile
+*.cmake
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+
+# Specific generated subdirectories (if needed)
+*.gen/sources_1/bd/*/sim/
+*.gen/sources_1/bd/*/synth/
