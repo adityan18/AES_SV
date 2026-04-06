@@ -7,7 +7,7 @@
       "name": "aes_128_bd",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2024.1",
+      "tool_version": "2024.2",
       "validated": "true"
     },
     "design_tree": {
@@ -43,9 +43,9 @@
     "components": {
       "zynq_ultra_ps_e_0": {
         "vlnv": "xilinx.com:ip:zynq_ultra_ps_e:3.5",
-        "ip_revision": "3",
+        "ip_revision": "5",
         "xci_name": "aes_128_bd_zynq_ultra_ps_e_0_0",
-        "xci_path": "ip\\aes_128_bd_zynq_ultra_ps_e_0_0\\aes_128_bd_zynq_ultra_ps_e_0_0.xci",
+        "xci_path": "ip/aes_128_bd_zynq_ultra_ps_e_0_0/aes_128_bd_zynq_ultra_ps_e_0_0.xci",
         "inst_hier_path": "zynq_ultra_ps_e_0",
         "parameters": {
           "PSU_BANK_0_IO_STANDARD": {
@@ -1459,7 +1459,7 @@
         "vlnv": "xilinx.com:module_ref:aes_128_top:1.0",
         "ip_revision": "1",
         "xci_name": "aes_128_bd_aes_128_top_0_0",
-        "xci_path": "ip\\aes_128_bd_aes_128_top_0_0\\aes_128_bd_aes_128_top_0_0.xci",
+        "xci_path": "ip/aes_128_bd_aes_128_top_0_0/aes_128_bd_aes_128_top_0_0.xci",
         "inst_hier_path": "aes_128_top_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -1555,9 +1555,9 @@
       },
       "axi_gpio_0": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-        "ip_revision": "33",
+        "ip_revision": "35",
         "xci_name": "aes_128_bd_axi_gpio_0_0",
-        "xci_path": "ip\\aes_128_bd_axi_gpio_0_0\\aes_128_bd_axi_gpio_0_0.xci",
+        "xci_path": "ip/aes_128_bd_axi_gpio_0_0/aes_128_bd_axi_gpio_0_0.xci",
         "inst_hier_path": "axi_gpio_0",
         "parameters": {
           "C_ALL_INPUTS": {
@@ -1582,7 +1582,7 @@
       },
       "ps8_0_axi_periph": {
         "vlnv": "xilinx.com:ip:axi_interconnect:2.1",
-        "xci_path": "ip\\aes_128_bd_ps8_0_axi_periph_0\\aes_128_bd_ps8_0_axi_periph_0.xci",
+        "xci_path": "ip/aes_128_bd_ps8_0_axi_periph_0/aes_128_bd_ps8_0_axi_periph_0.xci",
         "inst_hier_path": "ps8_0_axi_periph",
         "xci_name": "aes_128_bd_ps8_0_axi_periph_0",
         "parameters": {
@@ -1802,9 +1802,9 @@
         "components": {
           "xbar": {
             "vlnv": "xilinx.com:ip:axi_crossbar:2.1",
-            "ip_revision": "32",
-            "xci_name": "aes_128_bd_xbar_0",
-            "xci_path": "ip\\aes_128_bd_xbar_0\\aes_128_bd_xbar_0.xci",
+            "ip_revision": "34",
+            "xci_name": "aes_128_bd_ps8_0_axi_periph_imp_xbar_0",
+            "xci_path": "ip/aes_128_bd_ps8_0_axi_periph_imp_xbar_0/aes_128_bd_ps8_0_axi_periph_imp_xbar_0.xci",
             "inst_hier_path": "ps8_0_axi_periph/xbar",
             "parameters": {
               "NUM_MI": {
@@ -1896,9 +1896,9 @@
             "components": {
               "auto_ds": {
                 "vlnv": "xilinx.com:ip:axi_dwidth_converter:2.1",
-                "ip_revision": "31",
-                "xci_name": "aes_128_bd_auto_ds_0",
-                "xci_path": "ip\\aes_128_bd_auto_ds_0\\aes_128_bd_auto_ds_0.xci",
+                "ip_revision": "33",
+                "xci_name": "aes_128_bd_ps8_0_axi_periph_imp_auto_ds_0",
+                "xci_path": "ip/aes_128_bd_ps8_0_axi_periph_imp_auto_ds_0/aes_128_bd_ps8_0_axi_periph_imp_auto_ds_0.xci",
                 "inst_hier_path": "ps8_0_axi_periph/s00_couplers/auto_ds",
                 "parameters": {
                   "MI_DATA_WIDTH": {
@@ -1920,9 +1920,9 @@
               },
               "auto_pc": {
                 "vlnv": "xilinx.com:ip:axi_protocol_converter:2.1",
-                "ip_revision": "31",
-                "xci_name": "aes_128_bd_auto_pc_0",
-                "xci_path": "ip\\aes_128_bd_auto_pc_0\\aes_128_bd_auto_pc_0.xci",
+                "ip_revision": "33",
+                "xci_name": "aes_128_bd_ps8_0_axi_periph_imp_auto_pc_0",
+                "xci_path": "ip/aes_128_bd_ps8_0_axi_periph_imp_auto_pc_0/aes_128_bd_ps8_0_axi_periph_imp_auto_pc_0.xci",
                 "inst_hier_path": "ps8_0_axi_periph/s00_couplers/auto_pc",
                 "parameters": {
                   "MI_PROTOCOL": {
@@ -2030,9 +2030,9 @@
             "components": {
               "auto_ds": {
                 "vlnv": "xilinx.com:ip:axi_dwidth_converter:2.1",
-                "ip_revision": "31",
-                "xci_name": "aes_128_bd_auto_ds_1",
-                "xci_path": "ip\\aes_128_bd_auto_ds_1\\aes_128_bd_auto_ds_1.xci",
+                "ip_revision": "33",
+                "xci_name": "aes_128_bd_ps8_0_axi_periph_imp_auto_ds_1",
+                "xci_path": "ip/aes_128_bd_ps8_0_axi_periph_imp_auto_ds_1/aes_128_bd_ps8_0_axi_periph_imp_auto_ds_1.xci",
                 "inst_hier_path": "ps8_0_axi_periph/s01_couplers/auto_ds",
                 "parameters": {
                   "MI_DATA_WIDTH": {
@@ -2054,9 +2054,9 @@
               },
               "auto_pc": {
                 "vlnv": "xilinx.com:ip:axi_protocol_converter:2.1",
-                "ip_revision": "31",
-                "xci_name": "aes_128_bd_auto_pc_1",
-                "xci_path": "ip\\aes_128_bd_auto_pc_1\\aes_128_bd_auto_pc_1.xci",
+                "ip_revision": "33",
+                "xci_name": "aes_128_bd_ps8_0_axi_periph_imp_auto_pc_1",
+                "xci_path": "ip/aes_128_bd_ps8_0_axi_periph_imp_auto_pc_1/aes_128_bd_ps8_0_axi_periph_imp_auto_pc_1.xci",
                 "inst_hier_path": "ps8_0_axi_periph/s01_couplers/auto_pc",
                 "parameters": {
                   "MI_PROTOCOL": {
@@ -2670,16 +2670,16 @@
       },
       "rst_ps8_0_100M": {
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
-        "ip_revision": "15",
+        "ip_revision": "16",
         "xci_name": "aes_128_bd_rst_ps8_0_100M_0",
-        "xci_path": "ip\\aes_128_bd_rst_ps8_0_100M_0\\aes_128_bd_rst_ps8_0_100M_0.xci",
+        "xci_path": "ip/aes_128_bd_rst_ps8_0_100M_0/aes_128_bd_rst_ps8_0_100M_0.xci",
         "inst_hier_path": "rst_ps8_0_100M"
       },
       "axi_gpio_1": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-        "ip_revision": "33",
+        "ip_revision": "35",
         "xci_name": "aes_128_bd_axi_gpio_1_0",
-        "xci_path": "ip\\aes_128_bd_axi_gpio_1_0\\aes_128_bd_axi_gpio_1_0.xci",
+        "xci_path": "ip/aes_128_bd_axi_gpio_1_0/aes_128_bd_axi_gpio_1_0.xci",
         "inst_hier_path": "axi_gpio_1",
         "parameters": {
           "C_ALL_OUTPUTS": {
@@ -2695,9 +2695,9 @@
       },
       "axi_gpio_2": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-        "ip_revision": "33",
-        "xci_name": "aes_128_bd_axi_gpio_1_1",
-        "xci_path": "ip\\aes_128_bd_axi_gpio_1_1\\aes_128_bd_axi_gpio_1_1.xci",
+        "ip_revision": "35",
+        "xci_name": "aes_128_bd_axi_gpio_2_0",
+        "xci_path": "ip/aes_128_bd_axi_gpio_2_0/aes_128_bd_axi_gpio_2_0.xci",
         "inst_hier_path": "axi_gpio_2",
         "parameters": {
           "C_ALL_OUTPUTS": {
@@ -2713,9 +2713,9 @@
       },
       "axi_gpio_3": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-        "ip_revision": "33",
+        "ip_revision": "35",
         "xci_name": "aes_128_bd_axi_gpio_3_0",
-        "xci_path": "ip\\aes_128_bd_axi_gpio_3_0\\aes_128_bd_axi_gpio_3_0.xci",
+        "xci_path": "ip/aes_128_bd_axi_gpio_3_0/aes_128_bd_axi_gpio_3_0.xci",
         "inst_hier_path": "axi_gpio_3",
         "parameters": {
           "C_ALL_INPUTS": {
@@ -2734,9 +2734,9 @@
       },
       "axi_gpio_4": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-        "ip_revision": "33",
-        "xci_name": "aes_128_bd_axi_gpio_3_1",
-        "xci_path": "ip\\aes_128_bd_axi_gpio_3_1\\aes_128_bd_axi_gpio_3_1.xci",
+        "ip_revision": "35",
+        "xci_name": "aes_128_bd_axi_gpio_4_0",
+        "xci_path": "ip/aes_128_bd_axi_gpio_4_0/aes_128_bd_axi_gpio_4_0.xci",
         "inst_hier_path": "axi_gpio_4",
         "parameters": {
           "C_ALL_INPUTS": {
@@ -2755,9 +2755,9 @@
       },
       "axi_gpio_5": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-        "ip_revision": "33",
+        "ip_revision": "35",
         "xci_name": "aes_128_bd_axi_gpio_5_0",
-        "xci_path": "ip\\aes_128_bd_axi_gpio_5_0\\aes_128_bd_axi_gpio_5_0.xci",
+        "xci_path": "ip/aes_128_bd_axi_gpio_5_0/aes_128_bd_axi_gpio_5_0.xci",
         "inst_hier_path": "axi_gpio_5",
         "parameters": {
           "C_ALL_INPUTS": {
@@ -2773,9 +2773,9 @@
       },
       "axi_gpio_6": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-        "ip_revision": "33",
-        "xci_name": "aes_128_bd_axi_gpio_5_1",
-        "xci_path": "ip\\aes_128_bd_axi_gpio_5_1\\aes_128_bd_axi_gpio_5_1.xci",
+        "ip_revision": "35",
+        "xci_name": "aes_128_bd_axi_gpio_6_0",
+        "xci_path": "ip/aes_128_bd_axi_gpio_6_0/aes_128_bd_axi_gpio_6_0.xci",
         "inst_hier_path": "axi_gpio_6",
         "parameters": {
           "C_ALL_INPUTS": {
