@@ -48,7 +48,12 @@ def main(xsa) -> None:
 
     client = vitis.create_client()
 
-    client.set_workspace(str(VITIS_WS))
+    try:
+        client.set_workspace(str(VITIS_WS))
+    except:
+        client.update_workspace(str(VITIS_WS))
+
+
 
     generate_platform(client, xsa)
 
