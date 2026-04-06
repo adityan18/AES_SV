@@ -1,3 +1,0 @@
-D:/FPGA/AES_SV/aes_128_pf/zynqmp_fsbl/build/CMakeFiles/fsbl.elf.dir
-D:/FPGA/AES_SV/aes_128_pf/zynqmp_fsbl/build/CMakeFiles/edit_cache.dir
-D:/FPGA/AES_SV/aes_128_pf/zynqmp_fsbl/build/CMakeFiles/rebuild_cache.dir

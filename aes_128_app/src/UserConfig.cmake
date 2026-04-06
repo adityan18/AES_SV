@@ -25,7 +25,7 @@ set(USER_UNDEFINED_SYMBOLS
 # Example 3: Adding ${CMAKE_SOURCE_DIR}/data/include to add data/include from this project.
 
 set(USER_INCLUDE_DIRECTORIES
-D:/FPGA/AES_SV/aes_128_app/inc
+../inc
 )
 
 # -----------------------------------------
