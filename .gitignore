@@ -70,3 +70,5 @@ logs/
 # Specific generated subdirectories (if needed)
 *.gen/sources_1/bd/*/sim/
 *.gen/sources_1/bd/*/synth/
+
+vitis_journal.py

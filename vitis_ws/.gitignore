@@ -1,6 +1,8 @@
 # Ignore build output directory
 /build
 /export
+_ide/
+.rigel_lopper/
 
 # Ignore object files and dependent files
 .o
@@ -15,6 +17,9 @@
 
 .bin
 .pdi
-.peers.ini
-.repo.yaml
 .vitisWorkspace.json
+
+_ide/logs
+_ide/.wsdata
+
+/aes_128_platform
