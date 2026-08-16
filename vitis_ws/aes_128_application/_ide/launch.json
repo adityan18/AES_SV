@@ -24,7 +24,7 @@
 				"enableRPUSplitMode": false,
 				"resetAPU": false,
 				"resetRPU": false,
-				"bitstreamFile": "${workspaceFolder}/aes_128_application/_ide/bitstream/aes_128_xsa.bit",
+				"bitstreamFile": "${workspaceFolder}/aes_128_platform/export/aes_128_platform/hw/sdt/aes_128_xsa.bit",
 				"zuInitialization": {
 					"isFsbl": true,
 					"usingFSBL": {
@@ -48,7 +48,7 @@
 					{
 						"core": "psu_cortexa53_0",
 						"resetProcessor": true,
-						"elfFile": "${workspaceFolder}/aes_128_application/build/hello_world.elf",
+						"elfFile": "${workspaceFolder}/aes_128_application/build/aes128_application.elf",
 						"stopAtEntry": false
 					}
 				],
