@@ -8,6 +8,6 @@ pre-built/linux/
 !.petalinux/metadata
 *.o
 *.jou
-*.log
+*.log*
 components/plnx_workspace
 components/yocto
